@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>404 — Página não encontrada | Redesigner</title>
+    <meta name="description" content="A página que você procura não foi encontrada. Volte para a página inicial da Redesigner.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#FFC700">
+    <link rel="canonical" href="https://redesigner.com.br/404.html">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+
+    <!-- Manifest -->
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="404 — Página não encontrada | Redesigner">
+    <meta property="og:description" content="A página que você procura não foi encontrada.">
+    <meta property="og:url" content="https://redesigner.com.br/404.html">
+    <meta property="og:image" content="https://redesigner.com.br/logo-og.png">
+
+    <!-- Pré-conexão para fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Partículas -->
+    <div id="particles-js" aria-hidden="true"></div>
+
+    <!-- WhatsApp flutuante -->
+    <div class="whatsapp-float" id="whatsappFloatBtn" role="button" aria-label="Fale pelo WhatsApp" tabindex="0">
+        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </div>
+    <div class="whatsapp-modal" id="whatsappModal" role="dialog" aria-label="Modal WhatsApp">
+        <button class="whatsapp-modal-close" id="whatsappModalClose" aria-label="Fechar modal">×</button>
+        <h4>Precisa de ajuda?</h4>
+        <p>Fale com a gente pelo WhatsApp.</p>
+        <a href="https://wa.me/5511999778996" target="_blank" rel="noopener noreferrer" class="btn-prime btn-whatsapp">Iniciar Conversa →</a>
+    </div>
+
+    <!-- Cookie Popup -->
+    <div class="cookie-popup" id="cookiePopup" role="alert" aria-label="Aviso de cookies">
+        <p>Utilizamos cookies para métricas e melhoria da experiência. Ao continuar, você concorda com nossa <a href="privacidade.html" class="cookie-link">Política de Privacidade</a>.</p>
+        <div class="cookie-actions">
+            <button class="btn-cookie btn-accept" id="cookieAccept">Concordar</button>
+            <button class="btn-cookie btn-decline" id="cookieDecline">Recusar</button>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="navbar" id="navbar" role="banner">
+        <a href="index.html" class="logo-link" aria-label="Redesigner - Página inicial">
+            <img src="logo.png" alt="Logo Redesigner" class="logo-img" width="150" height="75">
+        </a>
+        <nav aria-label="Navegação principal">
+            <ul class="nav-items" id="navMenu">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#proposta">A Agência</a></li>
+                <li><a href="index.html#solucoes">Soluções</a></li>
+                <li><a href="index.html#diferenciais">Expertise</a></li>
+                <li><a href="index.html#cases">Cases</a></li>
+                <li><a href="index.html#contato">Contato</a></li>
+            </ul>
+        </nav>
+        <button class="burger-btn" id="burgerBtn" aria-label="Abrir menu mobile" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <!-- Menu mobile -->
+    <div class="mobile-nav-overlay" id="mobileMenu" role="navigation" aria-label="Menu mobile">
+        <ul class="nav-items">
+            <li><a href="index.html#home" class="mobile-link">Home</a></li>
+            <li><a href="index.html#proposta" class="mobile-link">A Agência</a></li>
+            <li><a href="index.html#solucoes" class="mobile-link">Soluções</a></li>
+            <li><a href="index.html#diferenciais" class="mobile-link">Expertise</a></li>
+            <li><a href="index.html#cases" class="mobile-link">Cases</a></li>
+            <li><a href="index.html#contato" class="mobile-link">Contato</a></li>
+        </ul>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="error-page">
+        <p class="error-code">404</p>
+        <h1 class="error-title">Página não encontrada</h1>
+        <p class="error-text">
+            Ops! O endereço que você tentou acessar não existe ou foi movido.
+            Verifique o link digitado ou volte para a página inicial.
+        </p>
+        <div class="error-actions">
+            <a href="index.html" class="btn-prime">Voltar ao Início</a>
+            <a href="https://wa.me/5511999778996" target="_blank" rel="noopener noreferrer" class="btn-prime">Falar no WhatsApp</a>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" id="footer" role="contentinfo">
+        <div class="footer-main">
+            <div class="footer-info">
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/agenciaredesigner" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://www.facebook.com/agenciaredesigner" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="https://www.linkedin.com/company/agenciaredesigner/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    <a href="mailto:atendimento@redesigner.com.br" aria-label="E-mail"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+                </div>
+                <div class="footer-details">
+                    <strong>Redesigner - Planejamento, Publicidade e Marketing</strong>
+                    <p>São Paulo - SP - Atendimento Nacional</p>
+                    <p>CNPJ: 41.142.331/0001-43</p>
+                </div>
+            </div>
+            <div class="footer-graphic">
+                <a href="index.html"><img src="logo.png" alt="Redesigner Agência Digital" width="180" height="auto"></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2019-2026 - Todos os direitos reservados.</p>
+            <nav aria-label="Políticas">
+                <a href="privacidade.html">Privacidade</a>
+                <a href="termos.html">Termos de Uso</a>
+                <a href="cookies.html">Cookies</a>
+                <a href="lgpd.html">LGPD</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</html>

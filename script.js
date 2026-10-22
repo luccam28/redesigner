@@ -1,3 +1,11 @@
+/* ============================================================
+   script.js — ReDesigner Agência Digital
+   ============================================================
+   ⚠️ CORREÇÃO APLICADA:
+   - Bloqueio de scroll do <body> ao abrir o menu mobile
+     (evita que o overlay "role" junto com a página)
+   ============================================================ */
+
 document.addEventListener('DOMContentLoaded', function () {
     'use strict';
 
@@ -39,16 +47,24 @@ document.addEventListener('DOMContentLoaded', function () {
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileLinks = document.querySelectorAll('.mobile-link');
 
+    /**
+     * Abre/fecha o menu mobile.
+     * @param {boolean} open - Se `true`, força o fechamento. Se omitido, alterna.
+     */
     function toggleMobileMenu(open) {
         const isOpen = typeof open === 'boolean' ? open : mobileMenu.classList.contains('active');
         if (isOpen) {
+            // FECHAR
             mobileMenu.classList.remove('active');
             burgerBtn.classList.remove('open');
             burgerBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = ''; // ✅ libera o scroll
         } else {
+            // ABRIR
             mobileMenu.classList.add('active');
             burgerBtn.classList.add('open');
             burgerBtn.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden'; // ✅ bloqueia o scroll
         }
     }
 
@@ -57,13 +73,14 @@ document.addEventListener('DOMContentLoaded', function () {
         toggleMobileMenu();
     });
 
+    // Fecha ao clicar em um link do menu
     mobileLinks.forEach(function (link) {
         link.addEventListener('click', function () {
-            toggleMobileMenu(true); // fecha
+            toggleMobileMenu(true);
         });
     });
 
-    // Fechar ao clicar fora do menu (no overlay)
+    // Fecha ao clicar fora do menu (no overlay)
     mobileMenu.addEventListener('click', function (e) {
         if (e.target === mobileMenu) {
             toggleMobileMenu(true);
@@ -93,7 +110,6 @@ document.addEventListener('DOMContentLoaded', function () {
         let currentSlide = 0;
         let autoSlideInterval;
 
-        // Cria dots
         cards.forEach(function (_, i) {
             const dot = document.createElement('span');
             dot.classList.add('dot');
@@ -125,10 +141,8 @@ document.addEventListener('DOMContentLoaded', function () {
             autoSlideInterval = setInterval(nextSlide, 6000);
         }
 
-        // Inicia auto-slide
         autoSlideInterval = setInterval(nextSlide, 6000);
 
-        // Pausa no hover
         const container = track.closest('.testimonials-container');
         container.addEventListener('mouseenter', function () {
             clearInterval(autoSlideInterval);
@@ -167,18 +181,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (whatsappFloat) {
         whatsappFloat.addEventListener('click', function () {
-            // Se o modal estiver aberto, fecha; senão abre
             if (whatsappModal.classList.contains('show')) {
                 toggleWhatsAppModal(true);
             } else {
                 toggleWhatsAppModal();
-                // Auto-fecha após 8s
                 setTimeout(function () {
                     toggleWhatsAppModal(true);
                 }, 8000);
             }
         });
-        // Tecla Enter/Space para acessibilidade
+        // Acessibilidade (Enter / Space)
         whatsappFloat.addEventListener('keydown', function (e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -193,7 +205,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Fechar modal clicando fora
     document.addEventListener('click', function (e) {
         if (whatsappModal && whatsappModal.classList.contains('show')) {
             if (!whatsappModal.contains(e.target) && e.target !== whatsappFloat) {
@@ -220,7 +231,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function acceptCookies() {
         localStorage.setItem('redesigner_cookies', 'true');
         cookiePopup.classList.remove('show');
-        // Poderia disparar eventos de consentimento aqui
     }
 
     function declineCookies() {
@@ -231,13 +241,15 @@ document.addEventListener('DOMContentLoaded', function () {
     if (cookieAccept) cookieAccept.addEventListener('click', acceptCookies);
     if (cookieDecline) cookieDecline.addEventListener('click', declineCookies);
 
-    // Exibe o popup após carregamento
     showCookiePopup();
 
     // ============================================================
     // 9. REVELAÇÃO (INTERSECTION OBSERVER)
     // ============================================================
-    const revealElements = document.querySelectorAll('.card, .testi-card, .case-item, .break-conversion, .problema-item, .processo-step, .autoridade-item, .faq-item');
+    const revealElements = document.querySelectorAll(
+        '.card, .testi-card, .case-item, .break-conversion, .problema-item, ' +
+        '.processo-step, .autoridade-item, .faq-item'
+    );
 
     const revealObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
@@ -262,7 +274,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const navLinks = document.querySelectorAll('.nav-items a:not(.mobile-link)');
     const sections = document.querySelectorAll('section[id]');
 
-    // Scroll suave para âncoras
     document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
@@ -271,11 +282,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (target) {
                 e.preventDefault();
                 const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 80;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-                // Fecha menu mobile
+                window.scrollTo({ top: offsetTop, behavior: 'smooth' });
                 if (mobileMenu.classList.contains('active')) {
                     toggleMobileMenu(true);
                 }
@@ -283,7 +290,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Atualiza link ativo no scroll
     function updateActiveNav() {
         let currentId = '';
         const scrollPos = window.pageYOffset + 100;
@@ -296,7 +302,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        // Se estiver no footer, considera "contato"
         const footer = document.querySelector('.site-footer');
         if (footer && window.pageYOffset + window.innerHeight >= footer.offsetTop + 100) {
             currentId = 'contato';
